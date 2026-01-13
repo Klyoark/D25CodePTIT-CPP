@@ -8,19 +8,28 @@
 constexpr char NL = '\n';
 using namespace std;
 
+ll gcd(ll a, ll b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+ll lcm(ll a, ll b, ll g) {
+    return a / gcd(a, b) * b;
+}
+
 int main() {
     fastio;
-    const string es = "86";
+
     int t;
     cin >> t;
     while (t--) {
-        string x;
-        cin >> x;
-        if (x.size() >= 2) {
-            string subx = x.substr(x.size() - 2, 2);
-            cout << (subx == "86" ? 1 : 0) << NL;
-        } else {
-            cout << 0 << NL;
-        }
+        ll a, b, g;
+        cin >> a >> b;
+        g = gcd(a, b);
+        cout << lcm(a, b, g) << " " << g << NL;
     }
+
+    return 0;
 }

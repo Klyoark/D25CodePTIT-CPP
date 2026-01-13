@@ -10,17 +10,18 @@ using namespace std;
 
 int main() {
     fastio;
-    const string es = "86";
+
     int t;
     cin >> t;
     while (t--) {
-        string x;
-        cin >> x;
-        if (x.size() >= 2) {
-            string subx = x.substr(x.size() - 2, 2);
-            cout << (subx == "86" ? 1 : 0) << NL;
-        } else {
+        ll n;
+        cin >> n;
+        if (n == 0) {
             cout << 0 << NL;
+        } else {
+            cout << 1 + (n - 1) % 9 << NL;
         }
     }
+
+    return 0;
 }
