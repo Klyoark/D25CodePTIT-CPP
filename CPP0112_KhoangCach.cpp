@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
-#define fastio ios::sync_with_stdio(false); cin.tie(0); 
+#define fastio                   \
+    ios::sync_with_stdio(false); \
+    cin.tie(0);
 #define ll long long
 #define pub push_back
 #define pob pop_back
@@ -11,11 +13,12 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        int a,b,c,d;
+        double a, b, c, d;
         cin >> a >> b >> c >> d;
-        double dx = a - c;
-        double dy = b - d;
-        double dis = sqrt(dx*dx + dy*dy);   
+        long double dx = a - c;
+        long double dy = b - d;
+        long double dis = sqrt(dx * dx + dy * dy);
+
         cout << fixed << setprecision(4);
         cout << dis << NL;
     }
