@@ -12,16 +12,19 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin >> n;
-        vector<ll> a(n);
-        for (ll& x : a) {
-            cin >> x;
+        int k, n;
+        cin >> k >> n;
+        vector<int> a;
+
+        int x;
+        for (int i = 0; i < k; ++i) {
+            for (int j = 0; j < n; ++j) {
+                cin >> x;
+                a.push_back(x);  
+            }
         }
-        vector<ll>::iterator ite = stable_partition(a.begin(), a.end(), [](int x) -> bool {
-            return x != 0;
-        });
-        for (int i = 0; i < n; ++i) {
+        sort(a.begin(), a.end());
+        for (int i = 0; i < k * n; ++i) {
             cout << a[i] << " ";
         }
         cout << NL;

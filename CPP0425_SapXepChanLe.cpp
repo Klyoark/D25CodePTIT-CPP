@@ -14,15 +14,22 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        vector<ll> a(n);
-        for (ll& x : a) {
+        vector<int> a(n);
+        for (int& x : a) {
             cin >> x;
         }
-        vector<ll>::iterator ite = stable_partition(a.begin(), a.end(), [](int x) -> bool {
-            return x != 0;
-        });
-        for (int i = 0; i < n; ++i) {
-            cout << a[i] << " ";
+
+        sort(a.begin(), a.end());
+        vector<int> res(n);
+        int i = 0;
+        for (int j = 0; j < n; j += 2) {
+            res[j] = a[i++];
+        }
+        for (int j = 1; j < n; j += 2) {
+            res[j] = a[i++];
+        }
+        for (int& x : res) {
+            cout << x << " ";
         }
         cout << NL;
     }
