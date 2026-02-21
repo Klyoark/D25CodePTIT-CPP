@@ -72,7 +72,7 @@ int main() {
         for (char& c : que) {
             c = toupper((char)c);
         }
-        cout << "Danh sach sinh vien nganh " << que << ":\n";
+        cout << "DANH SACH SINH VIEN NGANH " << que << ":\n";
         if (s == "DCCN" || s == "DCAT") {
             for (const SinhVien& sv : lst[s]) {
                 if (sv.getlop() [0] != 'E') {

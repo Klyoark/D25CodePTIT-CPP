@@ -38,6 +38,7 @@ class SinhVien {
                 w[0] = toupper((char)w[0]);
 
                 res += w;
+                res += " ";
             }
             res.pop_back();
             name = res;
@@ -45,7 +46,7 @@ class SinhVien {
     
         friend istream& operator >> (istream& is, SinhVien& sv) {
             stringstream stt;
-            stt << setfill('0') << setw(3) << to_string(sv.curMsv++);
+            stt << "B20DCCN" << setfill('0') << setw(3) << to_string(sv.curMsv++);
             sv.msv += stt.str();
 
             getline(is >> ws, sv.name);

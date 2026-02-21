@@ -16,7 +16,7 @@ class NhanVien {
         void makedate() {
             stringstream sstr(date);
             char delim1, delim2;
-            sstr >> d >> delim1 >> m >> delim2 >> y;
+            sstr >> m >> delim1 >> d >> delim2 >> y;
         }
 
         friend istream& operator >> (istream& is, NhanVien& nv) {

@@ -18,7 +18,7 @@ class SinhVien {
             getline(is >> ws, sv.lop);
             getline(is >> ws, sv.mail);
 
-            sv.khoa = "20" + sv.msv.substr(1, 2);
+            sv.khoa = "20" + sv.lop.substr(1, 2);
             return is;
         }
 

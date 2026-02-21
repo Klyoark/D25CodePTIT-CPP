@@ -32,6 +32,10 @@ class SinhVien {
         string getlop() const {
             return lop;
         }
+
+        string getmsv() const {
+            return msv;
+        }
 };
 
 int main() {
@@ -44,7 +48,10 @@ int main() {
         cin >> sv;
     }
     stable_sort(lst.begin(), lst.end(), [](const SinhVien& a, const SinhVien& b) -> bool {
-        return a.getlop() < b.getlop();
+        if (a.getlop() != b.getlop()) {
+            return a.getlop() < b.getlop();
+        }
+        return a.getmsv() < b.getmsv();
     });
 
     for (const SinhVien& sv : lst) {
