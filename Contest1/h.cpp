@@ -6,11 +6,14 @@
 constexpr char NL = '\n';
 using namespace std;
 
+static int nn = 0;
+static int cnt = 0;
+
 bool nto(ll n) {
-    if (n < 2){
+    if (n < 2) {
         return false;
     }
-    if (n == 2 || n == 3) {
+    if (n <= 3) {
         return true;
     }
     if (n % 2 == 0 || n % 3 == 0) {
@@ -22,11 +25,7 @@ bool nto(ll n) {
         }
     }
     return true;
-}   
-
-
-static int cnt = 0;
-static int nn = 0;
+}
 
 void genIn(int pos, int lim, ll cur) {
     if (pos == nn) {
@@ -35,9 +34,8 @@ void genIn(int pos, int lim, ll cur) {
         }
         return;
     }
-
-    for (int d = lim + 1; d <= 9; ++d) {
-        genIn(pos + 1, d, cur * 10 + d);
+    for (int i = lim + 1; i <= 9; ++i) {
+        genIn(pos + 1, i, cur * 10 + i);
     }
 }
 
@@ -48,30 +46,31 @@ void genDe(int pos, int lim, ll cur) {
         }
         return;
     }
-
-    for (int d = 0; d < lim; ++d) {
-        genDe(pos + 1, d, cur * 10 + d);
+    for (int i = 0; i < lim; ++i) {
+        genDe(pos + 1, i, cur * 10 + i);
     }
 }
 
 int main() {
     fastio;
-    
-    vector<int> q(10);
-    for (nn = 1; nn <= 9; ++nn) {
+
+    vector<int> res(10, 0);
+    for (int i = 2; i <= 9; ++i) {
+        nn = i;
         cnt = 0;
         for (int d = 1; d <= 9; ++d) {
             genIn(1, d, d);
-            genDe(1, d, d);
+            genDe(1, d ,d);
         }
-        q[nn] = cnt;
+        res[i] = cnt;
     }
-    
-    int t, n;
+
+    int t;
     cin >> t;
     while (t--) {
+        int n;
         cin >> n;
-        cout << q[n] << NL;
+        cout << res[n] << NL;
     }
 
     return 0;

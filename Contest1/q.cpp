@@ -6,40 +6,43 @@
 constexpr char NL = '\n';
 using namespace std;
 
-static vector<ll> memo(93, -1);
 
-ll fib(int n) {
+vector<ll> f(93, -1);
+ll fib(ll n) {
     if (n == 0) {
-        return memo[n] = 0;
+        f[n] = 0;
     }
-    if (n == 1){ 
-        return memo[n] = 1;
+    if (n == 1) {
+        f[n] = 1;
     }
-    if (memo[n] != -1) {
-        return memo[n];
+    if (f[n] != -1) {
+        return f[n];
     }
-    return memo[n] = fib(n - 1) + fib(n - 2);
+    f[n] = fib(n - 1) + fib(n - 2);
+    return f[n];
 }
 
 int main() {
     fastio;
-    fib(92);
+    fib(91);
     int t;
     cin >> t;
     while (t--) {
         ll n;
         cin >> n;
+        
         bool ok = false;
-        for (int i = 0; i < 93; ++i) {
-            if (memo[i] == n) {
+        for (int i = 0; i < 92; ++i) {
+            if (f[i] == n) {
                 ok = true;
                 break;
             }
-            if (memo[i] > n) { 
+            if (f[i] > n) {
                 break;
             }
         }
         cout << (ok ? "YES\n" : "NO\n");
     }
+
     return 0;
 }
