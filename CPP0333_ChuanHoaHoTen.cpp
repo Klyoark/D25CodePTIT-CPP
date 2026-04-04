@@ -16,7 +16,7 @@ int main() {
     getline(cin >> ws, s);
     stringstream namestream(s);
     while (namestream >> s) {
-        vs.push_back(s);
+        vs.push_back(move(s));
     }
     for (int i = 0; i < vs.size() - 1; ++i) {
         for (char& c : vs[i]) {

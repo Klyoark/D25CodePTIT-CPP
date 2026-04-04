@@ -8,34 +8,33 @@ using namespace std;
 
 int main() {
     fastio;
-
+    
     int n;
     cin >> n;
+    unordered_map<string, int> f;
     vector<string> a(n);
-    unordered_map<string, int> freqmap;
-    
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        freqmap[a[i]]++;
+
+    for (string& s : a) {
+        cin >> s;
+        ++f[s];
     }
 
     int res = 0;
+    int cnt = 0;
 
     for (string& s : a) {
         int len = s.length();
-        unordered_set<string> genres;
-
-        int cnt = 0;
+        unordered_set<string> g;
+        cnt = 0;
         for (int i = 0; i < len; ++i) {
-            string substr = "";
+            string ss = "";
             for (int j = i; j < len; ++j) {
-                substr.push_back(s[j]);
-
-                if (genres.insert(substr).second) {
-                    if (freqmap.count(substr)) {
-                        cnt += freqmap[substr];
+                ss.push_back(s[j]);
+                if (g.insert(ss).second) {
+                    if (f.count(ss)) {
+                        cnt += f[ss];
                     }
-                }
+                }   
             }
         }
 

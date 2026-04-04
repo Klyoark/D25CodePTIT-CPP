@@ -17,7 +17,7 @@ int main() {
         for (char& c : s) {
             c = tolower((char)(c));
         }
-        vs.push_back(s);
+        vs.push_back(move(s));
     }
     string res;
     res = vs.back();

@@ -1,12 +1,17 @@
 #include <bits/stdc++.h>
-#define fastio                   \
+#define fastio \
     ios::sync_with_stdio(false); \
     cin.tie(0);
 #define ll long long
-#define pb push_back
-#define pa pop_back
 constexpr char NL = '\n';
 using namespace std;
+
+bool swapok(string& x, string& y) {
+    if (x.length() != y.length()) {
+        return x.length() < y.length();
+    }
+    return (x < y);
+}
 
 int main() {
     fastio;
@@ -16,33 +21,33 @@ int main() {
     while (t--) {
         string x, y;
         cin >> x >> y;
-        int max_len = max(x.length(), y.length());
-        while (x.length() < max_len) {
-            x = '0' + x;
-        }
-        while (y.length() < max_len) {
-            y = '0' + y;
-        }
 
-        if (x < y) {
+        if (swapok(x, y)) {
             swap(x, y);
         }
 
-        string res = [&]() -> string {
-            string tmp = "";
-            bool carry = false;
-            for (int i = max_len - 1; i >= 0; --i) {
-                int d = (x[i] - '0') - (y[i] - '0') - (carry ? 1 : 0);
-                if (d < 0) {
-                    carry = true;
-                    d += 10;
-                } else {
-                    carry = false;
-                }
-                tmp = char(d + '0') + tmp;
+        string res = "";
+        int muon = 0;
+        int i = x.length() - 1, j = y.length() - 1;
+        while (i >= 0) {
+            int d = (x[i] - '0') - muon;
+            if (j >= 0) {
+                d -= (y[j] - '0');
             }
-            return tmp;
-        }();
+
+            if (d < 0) {
+                muon = 1;
+                d += 10;
+            } else {
+                muon = 0;
+            }
+
+            res.push_back(d + '0');
+
+            --i;
+            --j;
+        }
+        reverse(res.begin(), res.end());
 
         cout << res << NL;
     }

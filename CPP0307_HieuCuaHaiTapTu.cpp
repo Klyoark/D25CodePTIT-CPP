@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
-#define fastio                   \
+#define fastio \
     ios::sync_with_stdio(false); \
     cin.tie(0);
 #define ll long long
-#define pb push_back
-#define pa pop_back
 constexpr char NL = '\n';
 using namespace std;
 
@@ -17,25 +15,24 @@ int main() {
         string s1, s2;
         getline(cin >> ws, s1);
         getline(cin >> ws, s2);
-
-        set<string> setstr2;
+        unordered_set<string> wset;
         set<string> res;
+        stringstream sstr(s2);
 
-        stringstream ss2(s2);
-        string word;
-        while (ss2 >> word) {
-            setstr2.insert(word);
+        string w;
+        while (sstr >> w) {
+            wset.insert(w);
         }
 
-        stringstream ss1(s1);
-        while (ss1 >> word) {
-            if (setstr2.find(word) == setstr2.end()) {
-                res.insert(word);
+        sstr.str(s1);
+        sstr.clear();
+        while (sstr >> w) {
+            if (wset.find(w) == wset.end()) {
+                res.insert(w);
             }
         }
-
-        for (const string& x : res) {
-            cout << x << " ";
+        for (const string& ss : res) {
+            cout << ss << " ";
         }
         cout << NL;
     }

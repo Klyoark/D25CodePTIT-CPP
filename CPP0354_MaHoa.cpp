@@ -14,14 +14,15 @@ int main() {
     while (t--) {
         string s;
         cin >> s;
-        int ptr = 0;
-        for (int i = 0; i < s.length(); ++i) {
+
+        int ptr = 0, n = s.length();
+        for (int i = 0; i < n; ) {
             ptr = i;
-            while (ptr < s.length() && s[i] == s[ptr]) {
-                ptr++;
+            while (ptr < n && s[ptr] == s[i]) {
+                ++ptr;
             }
             cout << s[i] << ptr - i;
-            i = ptr - 1;
+            i = ptr;
         }
         cout << NL;
     }

@@ -24,7 +24,7 @@ int main() {
             for (char& c : word) {
                 c = tolower((char)c);
             }
-            svec.push_back(word); 
+            svec.push_back(move(word)); 
         }
         email += svec[svec.size() - 1];
         for (int i = 0; i < svec.size() - 1; ++i) {

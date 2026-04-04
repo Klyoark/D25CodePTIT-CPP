@@ -6,20 +6,20 @@
 constexpr char NL = '\n';
 using namespace std;
 
-void print(string line) {
+void print(string& line) {
     stringstream ssl(line);
-    string word;
+    string w;
     bool f = false;
-    while (ssl >> word) {
-        for (char& c : word) {
+    while (ssl >> w) {
+        for (char& c : w) {
             c = tolower((char)c);
         }
         if (!f) {
-            word[0] = toupper(word[0]);
-            cout << word;
+            w[0] = toupper((char)w[0]);
+            cout << w;
             f = true;
         } else {
-            cout << " " << word;
+            cout << " " << w;
         }
     }
     if (f) {

@@ -1,56 +1,45 @@
 #include <bits/stdc++.h>
-#define fastio                   \
+#define fastio \
     ios::sync_with_stdio(false); \
     cin.tie(0);
 #define ll long long
-#define pb push_back
-#define pa pop_back
 constexpr char NL = '\n';
 using namespace std;
 
+void ok(string& s) {
+    if (s[0] == '0') {
+        cout << "INVALID" << NL;
+        return;
+    }
+
+    vector<int> f(10, 0);
+    for (char c : s) {
+        if (c - '0' >= 0 && c - '0' <= 9) {
+            ++f[c - '0'];
+        } else {
+            cout << "INVALID" << NL;
+            return;
+        }
+    }
+    for (int x : f) {
+        if (!x) {
+            cout << "NO" << NL;
+            return;
+        }
+    }
+    cout << "YES" << NL;
+}
+
 int main() {
     fastio;
+
     int t;
     cin >> t;
     while (t--) {
         string s;
         cin >> s;
-        int ok = 1;
-        [&](){
-            if (s[0] == '0') {
-                ok = -1;
-                return;
-            }
-
-            vector<int> cnt(10, 0);
-            for (auto x : s) {
-                if (x - '0' >= 0 && x - '0' <= 9) {
-                    cnt[x - '0']++;
-                } else {
-                    ok = -1;
-                    return;
-                }
-            }
-
-            for (auto x : cnt) {
-                if (!x) {
-                    ok = 0;
-                    return;
-                }
-            }
-            ok = 1;
-            return;
-        }();
-
-        if (ok == 1) {
-            cout << "YES\n";
-        } else if (!ok) {
-            cout << "NO\n";
-        } else {
-            cout << "INVALID\n";
-        }
+        ok(s);
     }
-    
 
     return 0;
 }
